@@ -1,0 +1,92 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Times New Roman", Times, serif;
+}
+.app-contaniner{
+  padding: 20px;
+}
+.headingall {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #49274a;
+  transition-duration: 0.3s;
+  /* text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e; */
+}
+.headingall:hover {
+  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
+  font-size: 26px;
+}
+
+.c1 {
+  color: #49274a;
+  text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e;
+}
+/* WEBSITE COLORS */
+.textcolor1 {
+  color: #94618e;
+  font-weight: lighter;
+  transition-duration: 0.3s;
+}
+.textcolor2 {
+  color: #49274a;
+  font-weight: bolder;
+  font-size: 30px;
+  transition-duration: 0.3s;
+}
+.textcolor3 {
+  color: #f4decb;
+}
+.textcolor4 {
+  color: #f8eee7;
+}
+.bgcolor1 {
+  background-color: #f8a1ef;
+}
+.bgcolor2 {
+  background-color: #49274a;
+}
+.bgcolor3 {
+  background-color: #f4decb;
+}
+.bgcolor4 {
+  background-color: #f8eee7;
+}
+
+/* all buttons */
+.btn-main {
+  height: 40px;
+  width: 120px;
+  margin: 5px;
+  background-color: #94618e;
+  color: white;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e;
+  border: none;
+  border-radius: 20px;
+  transition-duration: 0.2s;
+}
+.btn-main:hover {
+  height: 42px;
+  width: 122px;
+  box-shadow: 0 1px 1px #49274a, 0 2px 2px #d39ecd, 0 4px 4px #d39ecd,
+    0 6px 8px #d39ecd, 0 8px 16px #d39ecd;
+}
+.heart {
+  font-size: 15px;
+  transition-duration: 0.5s;
+  text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e;
+}
+.heart:hover {
+  font-size: 25px;
+  margin: 10px;
+}
+.textcolor2:hover {
+  text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e;
+  font-size: 32px;
+}
+.textcolor1:hover {
+  font-size: 21px;
+  font-weight: 600;
+}

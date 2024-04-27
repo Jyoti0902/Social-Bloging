@@ -1,0 +1,28 @@
+.blog-container{
+    height: 300px;
+    width: 350px;
+    background-color: white;
+    box-shadow: 0 0 0 2px rgb(210, 209, 209);
+    text-align: center;
+    padding: 25px;
+    margin: 10px auto;
+}
+.details-blogs{   
+    margin-top: 20px;
+    padding: 0px 18px;
+}
+.details-blogs input{
+    margin: 8px 0px;
+    padding: 7px;
+    border: none;
+    border-bottom: 2px solid;
+}
+.file{
+    border: none !important
+}
+.main-bloghead{
+    justify-content: space-between;}
+.btn-logout{
+    margin-top: 20px;
+    margin-right: 130px;
+}

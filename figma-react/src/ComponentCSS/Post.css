@@ -1,0 +1,163 @@
+.post {
+  height: 440px;
+  width: 340px;
+  background-color: white;
+  border-radius: 25px;
+  margin: 30px;
+  margin-bottom: 60px;
+  box-shadow: 0 1px 4px #94618e, 0 4px 10px #94618e;
+  transition-duration: 0.2s;
+}
+.post:hover {
+  box-shadow: 0 1px 1px #94618e, 0 2px 2px #94618e, 0 4px 4px #94618e,
+    0 6px 8px #94618e, 0 8px 16px #94618e;
+  height: 444px;
+  width: 344px;
+}
+.bg1 {
+  height: 180px;
+  width: 280px;
+  margin: 30px;
+  border-radius: 30px;
+  transition-duration: 0.6s;
+}
+.font2 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 0px 28px;
+}
+.details {
+  padding: 0px 10px;
+}
+.post-details {
+  display: flex;
+  border-top: 2px solid grey;
+  padding: 10px 20px;
+  margin: 4px;
+}
+.other-details {
+  display: flex;
+}
+
+.like,
+.comment {
+  padding: 4px;
+  color: #49274a;
+  transition-duration: 0.5s;
+}
+.edit-icon {
+  text-align: end;
+  margin-top: 10px;
+  margin-right: 20px;
+  color: #49274a;
+}
+.del {
+  margin-left: 10px;
+  transition-duration: 0.5s;
+}
+.editi {
+  transition-duration: 0.5s;
+}
+.des {
+  font-size: 18px;
+}
+.profile-name {
+  padding: 4px 0px;
+  transition-duration: 0.4s;
+}
+.font1 {
+  transition-duration: 0.4s;
+  padding: 4px 0px;
+}
+
+/* comments */
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+.post-comment {
+  position: relative;
+  right: 12px;
+  bottom: 8px;
+}
+.post-comment textarea {
+  height: 20px;
+  width: 220px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.send {
+  display: flex;
+}
+.send button {
+  margin: 2px;
+  padding: 5px;
+  height: 38px;
+  background-color: #49274a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+.post-main {
+  display: flex;
+}
+.show-comments {
+  height: 400px;
+  width: 300px;
+  background-color: #f8a1ef;
+  border-radius: 20px;
+  position: relative;
+  right: 20px;
+  top: 50px;
+  text-align: center;
+  margin-right: 60px;
+}
+.map-comments{
+  background-color: white;
+  color: black;
+  height: 10%;
+  margin: 10px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.map-comments p{
+  padding-left: 20px;
+}
+.del-icon{
+  display: block;
+  align-items: end;
+  align-content:center;
+}
+/* hover effects */
+.like:hover {
+  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
+  font-size: 18px;
+}
+.comment:hover {
+  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
+  font-size: 18px;
+}
+.del:hover {
+  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
+  font-size: 19px;
+}
+.editi:hover {
+  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
+  font-size: 19px;
+}
+.bg1:hover {
+  box-shadow: 0 1px 3px #49274a, 0 1px 2px #49274a;
+  height: 190px;
+  width: 290px;
+  margin: 25px;
+}
+.profile-name:hover {
+  text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e;
+  font-size: 17px;
+}
+.font1:hover {
+  text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e;
+  font-size: 17px;
+}

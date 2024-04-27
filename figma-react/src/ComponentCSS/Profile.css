@@ -1,0 +1,104 @@
+.profile-bg {
+  margin: 20px;
+}
+.profile-bg img {
+  width: 100%;
+  height: 350px;
+  background-size: cover;
+}
+/* .profile-photo{
+} */
+.profile-photo img {
+  width: 180px;
+  height: 180px;
+  border-radius: 10%;
+  background-size: cover;
+  position: relative;
+  bottom: 140px;
+  left: 100px;
+}
+.profile-btn {
+  height: 30px;
+  width: 160px;
+  position: relative;
+  bottom: 110px;
+  left: 110px;
+  margin: 2px;
+}
+.details-profile {
+  display: flex;
+  margin: 20px;
+}
+.user-detail {
+  margin: 30px;
+}
+.user-details {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.user-details div {
+  text-align: center;
+  width: 200px;
+}
+
+.followers {
+  display: flex;
+  margin-left: 200px;
+}
+.followers div {
+  margin: 20px;
+}
+
+/* update form */
+.update-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 4;
+}
+.update-fields {
+  display: flex;
+  flex-direction: column;
+}
+.update-field {
+  display: flex;
+  flex-direction: column;
+}
+.update-field input {
+  width: 500px;
+  padding: 10px;
+  margin: 10px;
+}
+.save {
+  margin: 0px auto;
+}
+.save-btn,
+.cancel-btn {
+  height: 35px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: rgb(46, 235, 46);
+  border: none;
+  color: white;
+  margin: 10px;
+}
+.display-post{
+  border: 2px;
+  max-width : 800px;
+  margin: auto;
+  margin-left: 50px;
+}
+.blog-images{
+  height: 300px;
+  width: 600px;
+  margin: 10px;
+  transition-duration: 0.6s;
+  border: 4px solid;
+}
+.display-post-photos{
+  display: inline-flex;
+  flex-wrap: wrap;
+}
