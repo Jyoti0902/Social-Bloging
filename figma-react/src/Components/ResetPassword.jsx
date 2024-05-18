@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import '../ComponentCSS/ResetPassword.css'
 import { useNavigate } from 'react-router-dom';
-import { ResetPasswordAPI } from '../APIs/endpoints';
 import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { passwordReset } from '../Redux/actions/auth';
 
 
 
 const ResetPassword = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const getEmail = useParams();
     const [resetDetails, setresetDetails] = useState({
         email: getEmail.email,
@@ -15,13 +17,9 @@ const ResetPassword = () => {
     })
 
     const handleResetButton = async () => {
-        try {
-            await ResetPasswordAPI(resetDetails);
-            alert("Reset password successfully!");
-            navigate("/");
-        } catch (error) {
-            console.log(error, "reset password");
-        }
+        dispatch(passwordReset(resetDetails));
+        alert("Reset password successfully!");
+        navigate("/");
     }
     return (
         <>
@@ -34,7 +32,6 @@ const ResetPassword = () => {
                         {/* <input type="password" name="confirm_password" placeholder="Confirm new password" required /> */}
                         <button type="submit" className='btn-main' onClick={() => handleResetButton()}>Reset Password</button>
                     </div>
-                    <p className="message">A reset link will be sent to your email</p>
                 </div>
             </div>
         </>

@@ -1,104 +1,190 @@
-.profile-bg {
-  margin: 20px;
+/* Profile Container */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
+
+/* Background Image */
+.profile-bg {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 300px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .profile-bg img {
   width: 100%;
-  height: 350px;
-  background-size: cover;
+  height: auto;
 }
-/* .profile-photo{
-} */
-.profile-photo img {
-  width: 180px;
-  height: 180px;
-  border-radius: 10%;
-  background-size: cover;
-  position: relative;
-  bottom: 140px;
-  left: 100px;
-}
-.profile-btn {
-  height: 30px;
-  width: 160px;
-  position: relative;
-  bottom: 110px;
-  left: 110px;
-  margin: 2px;
-}
-.details-profile {
-  display: flex;
+
+.cover-photo-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
   margin: 20px;
+  font-size: 20px;
 }
-.user-detail {
-  margin: 30px;
+/* Profile Details */
+.details-profile {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
-.user-details {
-  width: 300px;
+
+.profile-photo {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 260px;
+}
+
+.profile-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 8px solid white;
+}
+
+.profile-btn {
+  background-color: #0077b5; /* LinkedIn Blue */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.profile-btn:hover {
+  background-color: #005f95; /* Darker LinkedIn Blue on hover */
+}
+
+.user-detail {
+  margin-left: 230px;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
 }
-.user-details div {
-  text-align: center;
-  width: 200px;
+
+.user-details h2 {
+  margin-right: 10px;
+}
+
+.user-details p {
+  margin: 0px 30px;
+  margin-bottom: 15px;
 }
 
 .followers {
   display: flex;
-  margin-left: 200px;
-}
-.followers div {
-  margin: 20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-/* update form */
+.followers div {
+  text-align: center;
+}
+
+.display-post {
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Swiper */
+.display-post-photos {
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.blog-images {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Update Form */
 .update-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 4;
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
 }
+
 .update-fields {
-  display: flex;
-  flex-direction: column;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
 }
+
 .update-field {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 20px;
 }
+
 .update-field input {
-  width: 500px;
-  padding: 10px;
-  margin: 10px;
+  width: calc(100% - 16px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
+
+.update-field input:focus {
+  outline: none;
+  border-color: #0077b5; /* LinkedIn Blue */
+}
+
 .save {
-  margin: 0px auto;
+  display: flex;
+  justify-content: flex-end;
 }
+
 .save-btn,
 .cancel-btn {
-  height: 35px;
-  width: 100px;
-  border-radius: 10px;
-  background-color: rgb(46, 235, 46);
+  padding: 8px 16px;
   border: none;
-  color: white;
-  margin: 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.display-post{
-  border: 2px;
-  max-width : 800px;
-  margin: auto;
-  margin-left: 50px;
+
+.save-btn {
+  background-color: #0077b5; /* LinkedIn Blue */
+  color: #fff;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
 }
-.blog-images{
-  height: 300px;
-  width: 600px;
-  margin: 10px;
-  transition-duration: 0.6s;
-  border: 4px solid;
+
+.save-btn:hover {
+  background-color: #005f95; /* Darker LinkedIn Blue on hover */
 }
-.display-post-photos{
-  display: inline-flex;
-  flex-wrap: wrap;
+
+.cancel-btn {
+  background-color: #ddd;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #ccc;
 }

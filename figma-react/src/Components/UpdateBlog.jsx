@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../ComponentCSS/UpdateBlog.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import { GetBlogById, Update } from '../APIs/endpoints';
+// import { GetBlogById } from '../APIs/endpoints';
+import { useDispatch, useSelector } from 'react-redux';
+import { getByIdBlog, updateBlog } from '../Redux/actions/post';
 
 const UpdateBlog = () => {
     const navigate = useNavigate();
@@ -10,15 +12,19 @@ const UpdateBlog = () => {
         description: "",
         image: ""
     })
+    const dispatch = useDispatch();
+    const { getOne } = useSelector((state) => state.Tasks)
+    console.log(getOne)
     //get Data API
     const { id } = useParams();
     const getData = async () => {
         try {
-            const res = await GetBlogById(id);
+            const res = dispatch(getByIdBlog(id))
+            console.log(res)
             setUpdateDetails({
-                title: res.data.title,
-                description: res.data.description,
-                image: res.data.image
+                title: getOne.title,
+                description: getOne.description,
+                image: getOne.image
             })
         } catch (err) {
             console.log(err)
@@ -33,25 +39,18 @@ const UpdateBlog = () => {
         const file = e.target.files[0];
         setUpdateDetails({ ...updateDetails, image: file });
     };
-    const [errors, setErrors] = useState({});
     const handleUpdate = async () => {
-        const error = {};
-        if (!updateDetails.title.trim()) {
-            error.title = "Title is required!";
+        try {
+            const formData = new FormData()
+            formData.append("title", updateDetails.title)
+            formData.append("description", updateDetails.description)
+            formData.append("image", updateDetails.image)
+            dispatch(updateBlog({ formData, id }))
+            alert("Updated successfully!");
+            navigate("/blog");
+        } catch (err) {
+            console.log(err);
         }
-        if (!updateDetails.description.trim()) {
-            error.description = "Description is required!";
-        }
-        else if (Object.keys(error).length === 0) {
-            try {
-                await Update(updateDetails, id);
-                alert("Updated successfully!");
-                navigate("/blog");
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        setErrors(error);
     }
     return (
         <>
@@ -59,11 +58,11 @@ const UpdateBlog = () => {
                 <div className="update-content">
                     <h2 className='heading-update'>Update ❤️</h2>
                     <input type="text" placeholder='Title' value={updateDetails.title} onChange={(e) => setUpdateDetails({ ...updateDetails, title: e.target.value })} />
-                    <br />{errors.title && <span>{errors.title}</span>}
+                    <br />
                     <input type="text" placeholder='Description' value={updateDetails.description} onChange={(e) => setUpdateDetails({ ...updateDetails, description: e.target.value })} />
-                    <br />{errors.description && <span>{errors.description}</span>}
+                    <br />
                     <input type="file" onChange={(e) => handleFile(e)} />
-                    <br />{errors.image && <span>{errors.image}</span>}
+                    <br />
                     <button className='btn-main' onClick={() => handleUpdate()}>Update</button>
                 </div>
             </div>

@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import '../ComponentCSS/CreateBlog.css';
 import { useNavigate } from 'react-router-dom';
-import { Create } from '../APIs/endpoints';
-
+import { useDispatch } from 'react-redux';
+import { createBlog } from '../Redux/actions/post';
 
 const CreateBlog = () => {
   const navigate = useNavigate();
   const [blogDetails, setBlogDetails] = useState({
     title: "",
     description: "",
-    image: ""
+    image: "",
   })
+  const dispatch = useDispatch();
   //validation
   const [errors, setErrors] = useState({});
   const handleCreate = async () => {
@@ -30,7 +31,7 @@ const CreateBlog = () => {
         formData.append("title", blogDetails.title);
         formData.append("description", blogDetails.description);
         formData.append("image", blogDetails.image);
-        await Create(formData);
+        dispatch(createBlog(formData));
         alert("Blog created successfully");
         navigate("/blog");
       } catch (err) {

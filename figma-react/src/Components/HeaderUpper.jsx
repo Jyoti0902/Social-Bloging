@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import '../ComponentCSS/HeaderUpper.css';
-import { FaRocketchat, FaCaretDown } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { getProfileDetails } from '../APIs/endpoints';
+import logo from '../Assets/blognest-high-resolution-logo-transparent.png'
+import { FiLogOut } from 'react-icons/fi';
 
 
 const HeaderUpper = () => {
@@ -13,6 +15,11 @@ const HeaderUpper = () => {
     const res = await getProfileDetails(userId);
     setUserDetails(res.data);
   }
+  // logout
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  }
   useEffect(() => {
     fetchProfileDetails();
   }, []);
@@ -20,15 +27,19 @@ const HeaderUpper = () => {
     <>
       <div className="container-HU">
         <div className="rightHU">
-          <p className='headingall'>Chatterly</p>
-          <FaRocketchat className='chat-icon' />
+          <img src={logo} alt="logo" className='main-logo' />
         </div>
         <div className="leftHU">
-          <img className='profile-img' src={`http://localhost:5505/${userDetails.profilePhoto}`} alt='profile-img' onClick={() => navigate("/profile")} />
-          <p className='heading1 headingall' onClick={() => navigate("/profile")}>{userDetails.userName}</p>
-          <FaCaretDown className='c1' />
+          <Link to="/blog" className='link-tag'>Home</Link>
+          <Link to="/blog" className='link-tag'>My Blogs</Link>
+          <Link to="/blog" className='link-tag'>About</Link>
+          <Link to="/profile" className='link-tag'>Profile</Link>
+          <div style={{display:'flex',justifyContent:'center'}} onClick={() => handleLogout()}>
+            <FiLogOut onClick={() => handleLogout()} className='logout'/><h4>Logout</h4>
+          </div>
         </div>
       </div>
+
     </>
   )
 }

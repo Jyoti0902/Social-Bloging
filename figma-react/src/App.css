@@ -64,15 +64,16 @@
   font-size: 16px;
   text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e;
   border: none;
-  border-radius: 20px;
-  transition-duration: 0.2s;
+  border-radius: 5px;
+  transition: all ease 0.1s;
+  box-shadow: 0px 5px 0px 0px #d28acb;
+
 }
-.btn-main:hover {
-  height: 42px;
-  width: 122px;
-  box-shadow: 0 1px 1px #49274a, 0 2px 2px #d39ecd, 0 4px 4px #d39ecd,
-    0 6px 8px #d39ecd, 0 8px 16px #d39ecd;
-}
+.btn-main:active {
+    transform: translateY(5px);
+    box-shadow: 0px 0px 0px 0px #a29bfe;
+  }
+
 .heart {
   font-size: 15px;
   transition-duration: 0.5s;

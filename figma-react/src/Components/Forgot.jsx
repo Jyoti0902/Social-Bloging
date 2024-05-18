@@ -1,30 +1,27 @@
 import React, { useState } from 'react'
 import '../ComponentCSS/Forgot.css'
-// import { useNavigate } from 'react-router-dom';
-import { SendForgotEmail } from '../APIs/endpoints';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { ForgotPasswordEmail } from '../Redux/actions/auth';
 
 const Forgot = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [emailSent, setEmailSent] = useState({
         email: ""
     })
     const [errors, setErrors] = useState({});
     const handleSentEmail = async () => {
         const error = {};
-        try {
-            if (!emailSent.email.trim()) {
-                error.email = "Please enter a valid email!";
-            }
-            else if (Object.keys(error).length === 0) {
-                await SendForgotEmail(emailSent);
-                alert("Link to reset password has been sent to your email!");
-                // setEmailSent({});
-            }
-            setErrors(error);
-        } catch (error) {
-            console.log(error, "forgot error");
+        if (!emailSent.email.trim()) {
+            error.email = "Please enter a valid email!";
         }
-
+        else if (Object.keys(error).length === 0) {
+            dispatch(ForgotPasswordEmail(emailSent));
+            alert("Link to reset password has been sent to your email!");
+            navigate("/");
+        }
+        setErrors(error);
     }
 
     return (

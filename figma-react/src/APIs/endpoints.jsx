@@ -9,25 +9,25 @@ const API = axios.create({
         // "Content-Type": "application/json",
     },
 })
-//create post APIs
+//create post APIs --
 export const Create = (blogDetails) => API.post("/post/create", blogDetails);
 export const GetBlogs = () => API.get("/post");
-export const GetBlogById = (id) => API.get(`/post/${id}`);
+export const GetBlogById = (blogId) => API.get(`/post/${blogId}`);
 export const deleteBlog = (id) => API.delete(`/post/${id}`);
 export const Update = (Details, id) => API.put(`/post/${id}`, Details);
 export const UpdateWithPatch = (updated, id) => API.patch(`/post/update/${id}`, updated);
-//comment APIs
+//comment APIs --
 export const CommentDo = (comments, id) => API.post(`/post/${id}/comments`, comments);
 export const DeleteComment = (id, commentId) => API.delete(`/post/${id}/comments/${commentId}`);
-//profile APIs
+//profile APIs --
 export const getProfileDetails = (id) => API.get(`/userProfile/profile/${id}`);
-export const updateProfile = (updateDetails, id) => API.put(`/userProfile/profile/${id}`, updateDetails);
+export const updateProfile = (userDetails, userId) => API.put(`/userProfile/profile/${userId}`, userDetails);
 export const updateProfilePhoto = (profile, id) => API.patch(`/userProfile/profile/${id}`, profile);
 //forgot password APIs
 export const SendForgotEmail = (emailToSend) => API.post("/auth/send-mail", emailToSend);
 export const ResetPasswordAPI = (resetDetails) => API.post("/auth/reset-password", resetDetails);
-//change password API
-export const ChangePasswordAPI = (newPassword, userId) => API.patch(`/userProfile/change-password/${userId}`, newPassword);
-//filter APIs
-export const Filter = (qtitle, createdDate) => API.get(`/post/filtered?title=${qtitle}&created_Date=${createdDate}`);
-export const SearchByTitle = (qtitle) => API.get(`/post/search?searchBy=${qtitle}`); 
+//change password API --
+export const ChangePasswordAPI = (newpassword, userId) => API.patch(`/userProfile/change-password/${userId}`, newpassword);
+//filter APIs --
+export const Filter = (title, created_Date) => API.get(`/post/filtered?title=${title}&created_Date=${created_Date}`);
+export const SearchByTitle = (title) => API.get(`/post/search?searchBy=${title}`);

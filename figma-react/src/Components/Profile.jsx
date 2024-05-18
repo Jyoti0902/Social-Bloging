@@ -1,81 +1,117 @@
 import React, { useEffect, useState } from 'react'
 import bg1 from '../Assets/bg7.jpg'
 import '../ComponentCSS/Profile.css'
-import { GetBlogs, getProfileDetails, updateProfile, updateProfilePhoto } from '../APIs/endpoints'
 import { Link, useNavigate } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
+import { useDispatch, useSelector } from 'react-redux'
+import { getUserProfile, updateUserDetail, updateUserProfile } from '../Redux/actions/user'
+import { FaCameraRetro } from "react-icons/fa6";
 
 
 const Profile = () => {
-    const [userDetails, setUserDetails] = useState({});
+    const [userDetails, setUserDetails] = useState({
+        userName: "",
+        email: "",
+        country: "",
+        state: "",
+        pincode: ""
+    });
     const [profilePic, setProfilePic] = useState({});
+    const [coverPic, setCoverPic] = useState({});
     const navigate = useNavigate();
+    const { task } = useSelector((state) => state.Tasks)
+    //redux 
+    const dispatch = useDispatch()
+    const { user } = useSelector((state) => state.User)
     //edit state
-    const [blog, setBlog] = useState([])
     const [editForm, setEditForm] = useState(true);
+    const [editCover, setEditCover] = useState(false);
     const userId = localStorage.getItem("userId");
-    const fetchProfileDetails = async () => {
-        const res = await getProfileDetails(userId);
-        setUserDetails(res.data)
-        // console.log(res.data)
+    const getUser = () => {
+        dispatch(getUserProfile(userId))
+        setUserDetails({
+            userName: user.userName,
+            email: user.email,
+            country: user.country,
+            state: user.state,
+            pincode: user.pincode
+        })
     }
-    const handleSave = async () => {
-        await updateProfile(userDetails, userId);
+    const handleSave = () => {
+        dispatch(updateUserDetail({ userDetails, userId }))
         handleProfileUpdate();
         alert("Profile updated successfully!")
         setEditForm(true);
-        fetchProfileDetails();
-    }
-    const handleCancel = async () => {
-        await fetchProfileDetails();
-        setEditForm(true);
-
-    }
-    //blog count
-    const fetchPosts = async () => {
-        const res = await GetBlogs();
-        setBlog(res.data);
-        // console.log(res.data)
     }
     //update Profile Photo
-    const handleProfileUpdate = async () => {
+    const handleProfileUpdate = () => {
         const formData = new FormData();
         formData.append('profilePhoto', profilePic);
-        await updateProfilePhoto(formData, userId);
+        dispatch(updateUserProfile({ formData, userId }))
+    }
+    const handleCoverPhoto = () => {
+        const formData = new FormData();
+        formData.append('coverPhoto', coverPic);
+        dispatch(updateUserProfile({ formData, userId }))
+        alert("Cover photo updated successfully!");
     }
     useEffect(() => {
-        fetchPosts()
-        fetchProfileDetails();
-    }, []);
+        getUser()
+    }, [editForm, editCover]);
     return (
         <>
             {
                 editForm ?
 
                     <div className='profile-container'>
-
                         <div className="profile-bg">
-                            <img src={bg1} alt="profile-bg" />
+                            <img src={`http://localhost:5505/${user.coverPhoto}`} alt="profile-bg"
+                            />
+                            <div className='cover-photo-icon' >
+                                {
+                                    editCover ?
+                                        <div>
+                                            <input type="file"
+                                                onChange={(e) => {
+                                                    if (e.target.files.length) {
+                                                        const selectedFile = e.target.files[0];
+                                                        setCoverPic(selectedFile);
+                                                    } else {
+                                                        setCoverPic({});
+                                                    }
+                                                }} />
+                                            <button onClick={() => { handleCoverPhoto(); setEditCover(false) }} className='save-btn'>Save</button>
+                                            <button onClick={() => setEditCover(false)} className='save-btn'>Cancel</button>
+                                        </div>
+                                        :
+                                        <div>
+                                            <FaCameraRetro onClick={() => setEditCover(true)} />
+                                        </div>
+                                }
+                            </div>
                         </div>
                         <div className='details-profile'>
                             <div className="profile-photo">
-                                <img src={`http://localhost:5505/${userDetails.profilePhoto}`} alt="profile-bg" />
+                                <img src={`http://localhost:5505/${user.profilePhoto}`} alt="profile-bg" />
                                 <button className='profile-btn' onClick={() => setEditForm(false)}>Edit Profile</button>
                                 <div><button className='profile-btn' onClick={() => navigate("/change-password")} >Change Password</button></div>
+                                <div>
+                                    <button type="submit" className="profile-btn" onClick={() => navigate("/blog")}>Back</button>
+                                </div>
                             </div>
                             <div className='user-detail'>
-                                <div className='user-details'><h2>Name: </h2><div><p>{userDetails.userName}</p></div></div>
-                                <div className='user-details'> <h2>Email: </h2><div><p>{userDetails.email}</p></div></div>
-                                <div className='user-details'> <h2>Country: </h2><div><p>{userDetails.country}</p></div></div>
-                                <div className='user-details'> <h2>State: </h2><div><p>{userDetails.state}</p></div></div>
-                                <div className='user-details'> <h2>Pincode: </h2><div><p>{userDetails.pincode}</p></div></div>
+                                <div className='user-details'><h2>Name: </h2><div><p>{user.userName}</p></div></div>
+                                <div className='user-details'> <h2>Email: </h2><div><p>{user.email}</p></div></div>
+                                <div className='user-details'> <h2>Country: </h2><div><p>{user.country}</p></div></div>
+                                <div className='user-details'> <h2>State: </h2><div><p>{user.state}</p></div></div>
+                                <div className='user-details'> <h2>Pincode: </h2><div><p>{user.pincode}</p></div></div>
                             </div>
                             <div>
                                 <div className='followers'>
                                     <div>
-                                        <h2>{blog.length}</h2>
+                                        <h2>{task.length}</h2>
                                         <p>Blogs</p>
                                     </div>
                                     <div>
@@ -102,7 +138,7 @@ const Profile = () => {
                                         modules={[Autoplay, Pagination, Navigation]}
                                         className="mySwiper"
                                     >
-                                        {blog.map((item, index) => {
+                                        {task.map((item, index) => {
                                             return (<div className='display-post-photos'>
                                                 <Link to={`http://localhost:5505/${item.image}`}>
                                                     <SwiperSlide><img className='blog-images' src={`http://localhost:5505/${item.image}`} alt="blogs" /></SwiperSlide>
@@ -115,7 +151,7 @@ const Profile = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div >
                     :
                     <div className='update-form'>
                         <div className='update-fields'>
@@ -129,7 +165,6 @@ const Profile = () => {
                                 <input type="file" onChange={(e) => {
                                     if (e.target.files.length) {
                                         const selectedFile = e.target.files[0];
-                                        // console.log(selectedFile,"wzexrgbjk")
                                         setProfilePic(selectedFile);
                                     } else {
                                         setProfilePic({});
@@ -138,10 +173,10 @@ const Profile = () => {
                             </div>
                             <div className='save'>
                                 <button type="submit" className='save-btn' onClick={() => handleSave()}>Save</button>
-                                <button type="submit" className='cancel-btn' onClick={() => handleCancel()}>Cancel</button>
+                                <button type="submit" className='cancel-btn' onClick={() => setEditForm(true)}>Cancel</button>
                             </div>
                         </div>
-                    </div>
+                    </div >
             }
         </>
 

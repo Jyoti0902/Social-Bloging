@@ -8,13 +8,19 @@ import CreateBlog from "./Components/CreateBlog";
 // import HeaderLower from "./Components/HeaderLower";
 import HeaderUpper from "./Components/HeaderUpper";
 import Footer from "./Components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import UpdateBlog from "./Components/UpdateBlog";
 import Profile from "./Components/Profile";
 import Forgot from "./Components/Forgot";
 import ResetPassword from "./Components/ResetPassword";
 import BlogDetails from "./Components/BlogDetails";
 import ChangePassword from "./Components/ChangePassword";
+import { Provider } from "react-redux";
+import { store } from "./Redux/store";
+import { counterContext } from "./context/counterContext";
+import Demo from "./Components/Demo";
+import DemoCounter from "./Components/DemoCounter";
+import Uheader from "./Components/Uheader";
 
 function App1() {
   const location = useLocation();
@@ -23,8 +29,8 @@ function App1() {
     location.pathname === "/signup" ||
     location.pathname === "/profile" ||
     location.pathname === "/forgotpassword" ||
-    location.pathname === "/resetpassword/:email";
-
+    location.pathname === "/resetpassword/:email" ||
+    location.pathname === "/blogdetails/:id";
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   useEffect(() => {
@@ -37,8 +43,8 @@ function App1() {
       <div className="app-container">
         {!showCreateForm && (
           <>
+           <Uheader />
             <HeaderUpper />
-            {/* <HeaderLower /> */}
           </>
         )}
         <Routes>
@@ -52,6 +58,8 @@ function App1() {
           <Route path="/resetpassword/:email" element={<ResetPassword />} />
           <Route path="/blogdetails/:id" element={<BlogDetails />} />
           <Route path="/change-password" element={<ChangePassword />} />
+          <Route path="/demo" element={<Demo />} />
+          <Route path="/democounter" element={<DemoCounter />} />
         </Routes>
         {!showCreateForm && <Footer />}
       </div>
@@ -60,10 +68,15 @@ function App1() {
 }
 
 function App() {
+  const [demoText, setDemoText] = useState("demoText");
   return (
-    <BrowserRouter>
-      <App1></App1>
-    </BrowserRouter>
+    <Provider store={store}>
+      <counterContext.Provider value={{ demoText, setDemoText }}>
+        <BrowserRouter>
+          <App1></App1>
+        </BrowserRouter>
+      </counterContext.Provider>
+    </Provider>
   );
 }
 

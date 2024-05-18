@@ -1,86 +1,68 @@
 import React, { useEffect, useState } from 'react'
-import '../ComponentCSS/HeaderLower.css';
+// import '../ComponentCSS/HeaderLower.css';
 import { FaSearch } from "react-icons/fa";
-import { Filter, GetBlogs, SearchByTitle } from '../APIs/endpoints';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterPosts, getAllBlogs, searchByTitle, searchByTitleOnInput } from '../Redux/actions/post';
 
-
-const HeaderLower = ({ setAllPosts }) => {
+const HeaderLower = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [created_Date, setCreated_Date] = useState("");
-  const [allBlogs, setAllBlogs] = useState([]);
   const [searchBy, setSearchBy] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  //fetch posts
-  const fetchPosts = async () => {
-    try {
-      const res = await GetBlogs();
-      if (res.data) {
-        setAllBlogs(res.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  //redux getblogs
+  const dispatch = useDispatch();
+  const allBlogs = useSelector((state) => state.Tasks);
+  console.log(allBlogs, 'allbogs')
   //handle search input
-  const handleSearchInput = async () => {
-    try {
-      const res = await SearchByTitle(searchBy);
-      setSuggestions(res.data);
-
-    } catch (error) {
-      console.log(error, "search input error!")
-    }
-  }
-  const handleCreated_Date = (date) => {
-    setCreated_Date(date);
-  }
-  const handleFilter = async () => {
-    try {
-      const res = await Filter(title, created_Date);
-      setAllPosts(res.data);
-    } catch (error) {
-      console.log(error);
-    }
+  const handleSearchInput = (title) => {
+    dispatch(searchByTitle(title))
   }
   useEffect(() => {
-    fetchPosts();
+    dispatch(getAllBlogs());
   }, []);
   useEffect(() => {
-    handleFilter();
+    dispatch(filterPosts({ title, created_Date }));
   }, [title, created_Date]);
-  // useEffect(() => {
-  //   handleSearchInput();
-  // }, [searchBy]);
+  useEffect(() => {
+    handleSearchInput(searchBy);
+  }, [searchBy]);
   return (
     <div className='container-HL'>
       <div className='left-HL'>
         <p className='filter headingall'>Filters</p>
-        <div className="createdby">
+        {/* <div className="createdby">
           <p>Created By</p>
           <select className='field1' value={title} onChange={(e) => setTitle(e.target.value === "All" ? "" : e.target.value)}>
             <option value="All">All</option>
             {
-              allBlogs.map((item, index) =>
+              allBlogs?.allpost?.map((item, index) =>
                 <option key={index} value={item.title}>{item.title}</option>
               )
             }
           </select>
-        </div>
-        <div className="published">
+        </div> */}
+        {/* <div className="published">
           <p>Published Date</p>
-          <input className='field2' type='date' onChange={(e) => handleCreated_Date(e.target.value)} />
-        </div>
+          <input className='field2' type='date' onChange={(e) => setCreated_Date(e.target.value)} />
+        </div> */}
       </div>
-      <div className="right-HL">
+      {/* <div className="right-HL">
         <p>Search</p>
-        <input className='field3' placeholder='Search here' value={searchBy} onChange={(e) => { setSearchBy(e.target.value); handleSearchInput() }} />
-        <FaSearch className='search' onClick={() => { handleSearchInput(); setAllPosts(suggestions); setSearchBy("") }} />
+        <input className='field3'
+          placeholder='Search here'
+          value={searchBy}
+          onChange={(e) => { setSearchBy(e.target.value) }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearchInput(searchBy);
+            }
+          }} />
+        <FaSearch className='search' onClick={() => { dispatch(searchByTitleOnInput(searchBy)) }} />
         {searchBy.length ?
           <div className='suggestions'>
             {
-              suggestions.map((item, index) =>
+              allBlogs?.search?.map((item, index) =>
                 <>
                   <span style={{ color: "black" }} onClick={() => navigate(`/blogdetails/${item._id}`, {
                     state: {
@@ -93,7 +75,7 @@ const HeaderLower = ({ setAllPosts }) => {
               )
             }
           </div> : null}
-      </div>
+      </div> */}
     </div >
   )
 }

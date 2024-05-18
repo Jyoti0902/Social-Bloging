@@ -5,34 +5,20 @@ import { MdDelete } from "react-icons/md";
 import { FaHeart, FaComment } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
-import { CommentDo, DeleteComment, UpdateWithPatch, deleteBlog } from '../APIs/endpoints';
+import { UpdateWithPatch } from '../APIs/endpoints';
 import { TiDeleteOutline } from "react-icons/ti";
+import { deleteBlogById, deleteComments, doComments, getAllBlogs } from '../Redux/actions/post';
+import { useDispatch } from 'react-redux';
 
 const Post = ({ post, render, setRender }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   //Delete API
   const handleDelete = async (id) => {
-    try {
-      await deleteBlog(id);
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(deleteBlogById(id));
+    dispatch(getAllBlogs());
+    alert("Post deleted successfully!")
   }
-  //comment button
-  // const handleComment = (postId) => {
-  //   const comment = allPosts.map((post) => {
-  //     return post._id === postId ? { ...post, comment: !post.comment } : post;
-  //   })
-  //   setAllPosts(comment);
-  // }
-
-  //Like button
-  // const toggleLike = (postId) => {
-  //   const like = allPosts.map((post) => {
-  //     return Update({ ...post, liked: !post.liked }, postId);
-  //   })
-  //   setAllPosts(like);
-  // }
   //....................comments input show with API................
   const [commentShow, setCommentShow] = useState(false);
   const toggleComment = () => {
@@ -42,10 +28,7 @@ const Post = ({ post, render, setRender }) => {
       setCommentShow(true)
     }
   }
-  const handleDeleteCommment = async (id, commentId) => {
-    await DeleteComment(id, commentId);
-    setRender(!render);
-  }
+
   //....................like button with API................
   const toggleLike = async (postId) => {
     await UpdateWithPatch({ liked: !post.liked }, postId);
@@ -63,26 +46,30 @@ const Post = ({ post, render, setRender }) => {
   let currentDate = `${monthName} ${date},${year}`;
 
   //comments
-  const [doComment, setDoComment] = useState({
-    comments: ""
+  const [comments, setComment] = useState({
+    comments: ''
   });
-  const postComments = async (id) => {
-    try {
-      await CommentDo(doComment, id);
-      alert("Comment successfully");
-      setRender(!render);
-    } catch (error) {
-      console.log(error)
-    }
+  const handlePostComments = (id) => {
+    dispatch(doComments({ comments, id }))
+    setRender(!render);
+    setComment({ ...comments, comments: '' })
+    alert("Comment successfully!")
   }
+  //delete comments
+  const handleDeleteCommment = (id, commentId) => {
+    dispatch(deleteComments({ id, commentId }));
+    setRender(!render);
+    alert("Comment deleted successfully!")
+  }
+
   return (
     <>
-      <div className="post-main">
+      {/* <div className="post-main">
         <div className="post" key={post._id}>
           <div className='edit-icon'><FaRegEdit className='editi' onClick={() => navigate(`/update/${post._id}`)} />
             <MdDelete className='del' onClick={() => handleDelete(post._id)} />
           </div>
-          <div className="upperpost">
+          <div className="upperpost" onClick={() => navigate(`/blogdetails/${post._id}`)}>
             <Link to={`http://localhost:5505/${post.image}`}>
               <img className="bg1" src={`http://localhost:5505/${post.image}`} alt="blogs" />
             </Link>
@@ -106,9 +93,7 @@ const Post = ({ post, render, setRender }) => {
                     style={{ color: "black" }}
                     onClick={() => toggleLike(post._id)} />
                 }
-                {/* <p className="font1">100&nbsp;&nbsp;&nbsp;&nbsp;</p> */}
                 <FaComment className='comment' onClick={() => toggleComment()} />
-                {/* <p className="font1">202</p> */}
               </div>
             </div>
           </div>
@@ -128,13 +113,61 @@ const Post = ({ post, render, setRender }) => {
             </div>
             <div className='post-comment'>
               <div className='send'>
-                <textarea value={doComment.comments} onChange={(e) => setDoComment({ ...doComment, comments: e.target.value })} rows={20} type='text' placeholder='Write a comment here!' />
-                <button onClick={() => postComments(post._id)}>Send</button></div>
+                <textarea value={comments.comments} onChange={(e) => setComment({ ...comments, comments: e.target.value })} rows={20} type='text' placeholder='Write a comment here!' />
+                <button onClick={() => handlePostComments(post._id)}>Send</button></div>
             </div>
           </div>}
 
 
-      </div>
+      </div> */}
+      {/* duplicate */}
+      <div className="post-main">
+        <div className="blog-img">
+          <Link to={`http://localhost:5505/${post.image}`}>
+            <img className="blog-photo" src={`http://localhost:5505/${post.image}`} alt="blogs" />
+          </Link>
+        </div>
+        <div className="blog-detail">
+          <div>
+            <p className="blog-date">{currentDate}</p>
+            <p className="blog-title">{post.title}</p>
+            <p className='blog-des'>{post.description}Create a blog post subtitle that summarizes your post in a few short, punchy sentences and</p>
+          </div>
+
+          <div className='like-comment'>
+            <div>{post.liked ? <FaHeart
+              style={{ color: "red" }}
+              onClick={() => toggleLike(post._id)} />
+              : <FaRegHeart
+                style={{ color: "black" }}
+                onClick={() => toggleLike(post._id)} />
+            }</div>
+            <div> <FaComment onClick={() => toggleComment()} /></div>
+            <div> <FaRegEdit onClick={() => navigate(`/update/${post._id}`)} /></div>
+            <div> <MdDelete onClick={() => handleDelete(post._id)} /></div>
+          </div>
+        </div>
+        {commentShow &&
+          <div className='comments'>
+            <div className='show-comments'>
+              <h2>Comments:</h2>
+              {
+                post.postComments.length ? <span>{post.postComments.slice(0, 5).map((item, index) => {
+                  return <div className='map-comments'>
+                    <p>{item.comments}</p>
+                    <div className='del-icon'><TiDeleteOutline onClick={() => handleDeleteCommment(post._id, item._id)} /></div>
+                  </div>
+                })}</span>
+                  : <span>No comment</span>}
+            </div>
+            <div className='post-comment'>
+              <div className='send'>
+                <textarea value={comments.comments} onChange={(e) => setComment({ ...comments, comments: e.target.value })} rows={20} type='text' placeholder='Write a comment here!' />
+                <button onClick={() => handlePostComments(post._id)}>Send</button></div>
+            </div>
+          </div>}
+
+      </div >
     </>
   )
 }
