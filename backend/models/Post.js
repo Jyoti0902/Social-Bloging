@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
+  user: {
+    type: String,
+  },
   title: {
     type: String,
     required: true,

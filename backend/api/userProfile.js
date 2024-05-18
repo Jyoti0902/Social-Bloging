@@ -40,18 +40,30 @@ profileRouter.put("/profile/:id", async (req, res) => {
 //patch API
 profileRouter.patch(
   "/profile/:id",
-  upload.single("profilePhoto"),
+  upload.fields([
+    { name: "profilePhoto", maxCount: 1 },
+    { name: "coverPhoto", maxCount: 1 },
+  ]),
   async (req, res) => {
     try {
       const userid = req.params.id;
-      const profilePhoto = req.file.path;
+      // const profilePhoto = req.file.path;
       const user = await User.findById(userid);
       if (!user) {
         return res.status(400).json({ message: "User not found" });
       }
-      user.profilePhoto = profilePhoto;
+      const profilephoto = req.files["profilePhoto"]
+        ? req.files["profilePhoto"][0].path
+        : user.profilePhoto;
+      const coverphoto = req.files["coverPhoto"]
+        ? req.files["coverPhoto"][0].path
+        : user.coverPhoto;
+      user.profilePhoto = profilephoto;
+      user.coverPhoto = coverphoto;
       await user.save();
-      res.json(user);
+      res
+        .status(200)
+        .json({ message: "Photo updated successfully", user: user });
     } catch (error) {
       console.log(error);
     }

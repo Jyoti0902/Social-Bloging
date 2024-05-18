@@ -25,20 +25,23 @@ postApp.post(
     try {
       const { title, description } = req.body;
       const image = req.file.path;
-      if (!title || !description || !image) {
-        res.status(400).json({ message: "All fields are required!" });
-      } else {
-        const post = new postModel({
-          title,
-          description,
-          image,
-          liked: false,
-          comment: false,
-          created_Date: new Date(),
-        });
-        const newPost = await post.save();
-        res.json(newPost);
+      if (!title || !description) {
+        return res.status(400).json({ message: "All fields are required!" });
       }
+      if (!req.file) {
+        return res.status(400).json({ message: "No file uploaded!" });
+      }
+      const post = new postModel({
+        user: req.user,
+        title,
+        description,
+        image,
+        liked: false,
+        comment: false,
+        created_Date: new Date(),
+      });
+      const newPost = await post.save();
+      res.json(newPost);
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +60,8 @@ postApp.delete("/:id", applyMiddleWare, async (req, res) => {
 //get API
 postApp.get("/", applyMiddleWare, async (req, res) => {
   try {
-    const posts = await postModel.find();
+    const userId = req.user;
+    const posts = await postModel.find({ user: userId });
     res.json(posts);
   } catch (error) {
     console.log(error);
@@ -89,16 +93,18 @@ postApp.get("/search", async (req, res) => {
     // if (searchBy) {
     //   return res.json([]);
     // }
-    const searched = await postModel.find({ title: { $regex: searchBy } });
+    const searched = await postModel.find({
+      title: { $regex: searchBy, $options: "i" },
+    });
     res.json(searched);
   } catch (error) {
     console.log(error, "search API error!");
   }
 });
 //get particular id
-postApp.get("/:id", applyMiddleWare, async (req, res) => {
+postApp.get("/:blogId", applyMiddleWare, async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.params.blogId;
     const post = await postModel.findById(id);
     res.json(post);
   } catch (error) {
@@ -106,13 +112,16 @@ postApp.get("/:id", applyMiddleWare, async (req, res) => {
   }
 });
 //put API
-postApp.put("/:id", applyMiddleWare, async (req, res) => {
-  try {
-    const id = req.params.id;
-    const { title, description, image } = req.body;
-    if (!title || !description || !image) {
-      res.status(400).json({ message: "All fields are required!" });
-    } else {
+postApp.put(
+  "/:id",
+  applyMiddleWare,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const id = req.params.id;
+      const image = req?.file?.path;
+      const { title, description } = req.body;
+
       const updatedBlog = await postModel.findByIdAndUpdate(
         id,
         {
@@ -124,11 +133,11 @@ postApp.put("/:id", applyMiddleWare, async (req, res) => {
         { new: true }
       );
       res.json(updatedBlog);
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
   }
-});
+);
 //patch API
 postApp.patch("/update/:id", applyMiddleWare, async (req, res) => {
   try {

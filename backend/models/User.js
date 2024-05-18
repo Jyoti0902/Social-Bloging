@@ -32,6 +32,10 @@ const userSchema = mongoose.Schema({
     type: String,
     default: "",
   },
+  coverPhoto: {
+    type: String,
+    default: "",
+  },
 });
 
 export const User = mongoose.model("User", userSchema);
