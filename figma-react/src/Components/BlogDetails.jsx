@@ -39,7 +39,7 @@ const BlogDetails = () => {
             <div className='blog-div-heading'>
                 BlogDetails
             </div>
-            <button type="submit" className="btn-main blogd-btn" onClick={() => navigate("/blog")}>Back</button>
+            <button type="submit" className="all-btn blogd-btn" onClick={() => navigate("/blog")}>Back</button>
         </div>
             <div className='blog-details'>
                 <div className='blogdetail-main-container'>
@@ -47,12 +47,14 @@ const BlogDetails = () => {
                         <img className='blog-main-image' src={`http://localhost:5505/${getOne.image}`} alt="blog" />
                     </div>
                     <div className='blogdetail-page-main-div'>
+                        <div style={{display:'flex'}}>Title:
                         <div className='blog-div-title'>
                             {getOne.title}
-                        </div>
+                        </div></div>
+                        <div style={{display:'flex'}}>Description:
                         <div className='blog-div-description'>
                             {getOne.description}
-                        </div>
+                        </div></div>
                         <div className='blog-div-about'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae rerum doloremque quas delectus exercitationem illo, at iusto soluta. Ratione, debitis nostrum! Labore aspernatur nulla perspiciatis placeat ratione esse alias laudantium.
                             Repellat eaque aspernatur nobis quo voluptates ducimus. Laborum saepe iste illum labore error sequi nemo est molestiae laudantium voluptatum, eius ea cumque quisquam commodi velit beatae aut omnis eos id!
                             Molestiae et corrupti commodi asperiores nihil est inventore aspernatur culpa, modi itaque, aliquam delectus ratione cum, facilis id! Ullam sint voluptate in, voluptatibus id iusto modi doloribus asperiores?</div>
@@ -80,7 +82,7 @@ const BlogDetails = () => {
                     </div>
                     <div class="chat-footer">
                         <input placeholder="Type your message" type="text" value={comments.comments} onChange={(e) => setComment({ ...comments, comments: e.target.value })} />
-                        <button style={{ backgroundColor: '#49274a' }} onClick={() => postComment()}>Send</button>
+                        <button style={{ backgroundColor: 'rgb(187 90 58)' }} onClick={() => postComment()}>Send</button>
                     </div>
                 </div>
 

@@ -1,0 +1,10 @@
+.all-blogs {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.allblogs {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 3000px;
+  margin-left: 160px;
+}

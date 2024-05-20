@@ -1,9 +1,9 @@
-/* Common styles for both mobile and laptop */
 .footer {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: black;
-  box-shadow: 0 1px 1px #94618e, 0 2px 2px #94618e, 0 4px 4px #94618e,
-    0 6px 8px #94618e, 0 8px 16px #94618e;
+  box-shadow: 0 1px 1px brown, 0 2px 2px brown, 0 4px 4px brown, 0 6px 8px brown,
+    0 8px 16px brown;
+  padding: 10px; 
 }
 
 .font3 {
@@ -15,7 +15,7 @@
 }
 
 .span-tag {
-  color: #49274a !important;
+  color: brown !important;
   padding: 2px;
   font-size: 30px;
   transition-duration: 0.2s;
@@ -46,7 +46,7 @@ ul {
   font-size: 22px;
   font-weight: 700;
   text-align: left;
-  color: #49274a;
+  color: brown;
   transition-duration: 0.2s;
 }
 
@@ -54,7 +54,7 @@ ul {
   padding-top: 20px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #49274a;
+  border-bottom: 2px solid brown;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -64,6 +64,7 @@ ul {
 .part3,
 .part4 {
   margin: 4px;
+  padding: 5px; 
 }
 
 .social {
@@ -93,7 +94,7 @@ li:hover,
 .font4:hover,
 .social:hover,
 .lowerfooter p:hover {
-  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
+  text-shadow: 1px 1px 2px brown, 0 0 1em brown, 0 0 0.2em brown;
 }
 
 /* Media queries for responsiveness */
@@ -111,7 +112,7 @@ li:hover,
     margin: 10px 0;
   }
   .footer {
-    box-shadow: 0 20px 10px -20px rgba(0,0,0,0.45) inset;
+    box-shadow: 0 20px 10px -20px rgba(0, 0, 0, 0.45) inset;
   }
   .lowerfooter p {
     text-align: center;

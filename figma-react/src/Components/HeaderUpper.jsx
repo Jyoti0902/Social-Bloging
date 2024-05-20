@@ -31,11 +31,11 @@ const HeaderUpper = () => {
         </div>
         <div className="leftHU">
           <Link to="/blog" className='link-tag'>Home</Link>
-          <Link to="/blog" className='link-tag'>My Blogs</Link>
-          <Link to="/blog" className='link-tag'>About</Link>
+          <Link to="/allposts" className='link-tag'>My Blogs</Link>
+          <Link to="/about" className='link-tag'>About</Link>
           <Link to="/profile" className='link-tag'>Profile</Link>
-          <div style={{display:'flex',justifyContent:'center'}} onClick={() => handleLogout()}>
-            <FiLogOut onClick={() => handleLogout()} className='logout'/><h4>Logout</h4>
+          <div style={{ display: 'flex', justifyContent: 'center' }} onClick={() => handleLogout()}>
+            <FiLogOut onClick={() => handleLogout()} className='logout' /><h4>Logout</h4>
           </div>
         </div>
       </div>

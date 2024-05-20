@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Blog from "./Components/Blog";
 import Signup from "./Components/Signup";
 import CreateBlog from "./Components/CreateBlog";
-// import HeaderLower from "./Components/HeaderLower";
 import HeaderUpper from "./Components/HeaderUpper";
 import Footer from "./Components/Footer";
 import { useEffect, useState } from "react";
@@ -20,7 +19,8 @@ import { store } from "./Redux/store";
 import { counterContext } from "./context/counterContext";
 import Demo from "./Components/Demo";
 import DemoCounter from "./Components/DemoCounter";
-import Uheader from "./Components/Uheader";
+import AllPosts from "./Components/AllPosts";
+import About from "./Components/About";
 
 function App1() {
   const location = useLocation();
@@ -43,7 +43,6 @@ function App1() {
       <div className="app-container">
         {!showCreateForm && (
           <>
-           <Uheader />
             <HeaderUpper />
           </>
         )}
@@ -60,6 +59,8 @@ function App1() {
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/demo" element={<Demo />} />
           <Route path="/democounter" element={<DemoCounter />} />
+          <Route path="/allposts" element={<AllPosts />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         {!showCreateForm && <Footer />}
       </div>

@@ -3,12 +3,9 @@ import '../ComponentCSS/Main.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Post from './Post';
-import bg1 from '../Assets/bg1.avif'
-import bg2 from '../Assets/bg2.avif'
-import bg3 from '../Assets/bg3.avif'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBlogs } from '../Redux/actions/post';
-import { FiLogOut } from "react-icons/fi";
+import Uheader from './Uheader';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -16,11 +13,6 @@ const Main = () => {
   //redux getblogs
   const allPost = useSelector((state) => state.Tasks)
   const dispatch = useDispatch();
-  // logout
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  }
   // get blog API
   useEffect(() => {
     dispatch(getAllBlogs());
@@ -28,9 +20,10 @@ const Main = () => {
 
   return (
     <>
+      <Uheader />
       <div className='main-container'>
         <div className='main-imgs'>
-          <div>
+          {/* <div>
             <img src={bg1} alt="bg1" className='main-img' />
           </div>
           <div id='main-img'>
@@ -39,12 +32,16 @@ const Main = () => {
           </div>
           <div>
             <img src={bg3} alt="bg3" className='main-img' />
-          </div>
+          </div> */}
+          {/* <div className='main-h'>Write.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Share.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Connect.</div> */}
+          <div className='main-h' style={{margin:'auto'}}>BLog Posts</div>
         </div>
         <div className="left-container">
           <div className="main">
             {
-              allPost?.task.length ? allPost.task.slice(0,5).map((post, id) => {
+              allPost?.allpost.length ? allPost.allpost.slice(0, 3).map((post, id) => {
                 return (
                   <>
                     <Post
@@ -57,27 +54,28 @@ const Main = () => {
 
               }) : <h2 className='blog-message'>No blogs to show</h2>
             }
-
+            <div>
+              <button className="all-btn" onClick={() => navigate("/allposts")}>All Posts</button>
+            </div>
           </div>
           <div className="create-new-container">
             <div className="create-new">
-              <h1>Let the posts
-                come to you.</h1>
+              <h1>"Every blog is a journey waiting to be shared. Start yours today and let your words illuminate the path for others."</h1>
               <div className='main-content'>
                 <div className='btns-main'>
-                  <button className="create-btn" onClick={() => navigate("/create")}>Create New</button>
+                  <button className="create-btn" onClick={() => navigate("/create")}>Create Blog</button>
                 </div>
               </div>
             </div>
             <div className="glimpse">
-              <h2>Find me on Instagram</h2>
+              <h2>Share Your Experience</h2>
               <div className="blog-photos">
                 {
-                  allPost.task.map((post, id) => {
+                  allPost?.task.slice(0, 6).map((post, id) => {
                     return (
                       <>
                         <Link to={`http://localhost:5505/${post.image}`}>
-                          <img className="blog-photo" src={`http://localhost:5505/${post.image}`} alt="blogs" />
+                          <img className="blog-pics" src={`http://localhost:5505/${post.image}`} alt="blogs" />
                         </Link>
                       </>
                     )

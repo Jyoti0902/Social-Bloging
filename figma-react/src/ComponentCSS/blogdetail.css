@@ -1,7 +1,7 @@
 .blog-div-heading {
   font-size: 50px;
   font-weight: bold;
-  color: #333;
+  color: rgb(187 90 58);
   margin-bottom: 20px;
   text-align: center;
   padding: 20px;
@@ -19,7 +19,7 @@
   align-items: center;
   padding: 0px 50px;
   margin-bottom: 50px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgb(187 90 58), 0 3px 6px rgb(187 90 58);
 }
 
 .blog-div-main-image {
@@ -47,14 +47,16 @@
 .blog-div-title {
   font-size: 20px;
   font-weight: bold;
-  color: #333;
+  color: rgb(187 90 58);
   margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 .blog-div-description {
   font-size: 16px;
-  color: #555;
+  color: rgb(187 90 58);
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .blog-div-about {
@@ -78,14 +80,14 @@
 
 .chat-header {
   padding: 10px;
-  background-color: #bcb7b7;
+  background-color: rgb(187 90 58);
   display: flex;
   align-items: center;
 }
 
 .chat-header .h2 {
   font-size: 16px;
-  color: #333;
+  color: #fff;
 }
 
 .chat-body {
@@ -101,7 +103,8 @@
 }
 
 .incoming {
-  background-color: #bcb7b7;
+  background-color:antiquewhite;
+  color: black;
 }
 
 .outgoing {
@@ -111,13 +114,13 @@
 
 .message p {
   font-size: 14px;
-  color: #333;
+  color: black;
   margin: 0;
 }
 
 .chat-footer {
   padding: 10px;
-  background-color: #bcb7b7;
+  background-color: antiquewhite;
   display: flex;
   position: absolute;
   bottom: 0;
@@ -134,7 +137,7 @@
 .chat-footer button {
   padding: 5px 10px;
   border: none;
-  background-color: #4285f4;
+  background-color: rgb(187 90 58);
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -142,7 +145,7 @@
 }
 
 .chat-footer button:hover {
-  background-color: #0f9d58;
+  background-color: rgb(187 90 58);
 }
 
 @keyframes chatAnimation {
