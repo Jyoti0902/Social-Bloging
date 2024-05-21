@@ -66,8 +66,8 @@ const Post = ({ post, render, setRender }) => {
     <>
       <div className="post-main">
         <div className="blog-img">
-          <Link to={`https://social-bloging-web-hkb1.onrender.com/${post.image}`}>
-            <img className="blog-photo" src={`https://social-bloging-web-hkb1.onrender.com/${post.image}`} alt="blogs" />
+          <Link to={`https://social-bloging-b.onrender.com/${post.image}`}>
+            <img className="blog-photo" src={`https://social-bloging-b.onrender.com/${post.image}`} alt="blogs" />
           </Link>
         </div>
         <div className="blog-detail">

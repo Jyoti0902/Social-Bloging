@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://social-bloging-web-hkb1.onrender.com";
+const BASE_URL = "https://social-bloging-b.onrender.com";
 const token = localStorage.getItem("token");
 const API = axios.create({
     baseURL: BASE_URL,
@@ -9,6 +9,7 @@ const API = axios.create({
         // "Content-Type": "application/json",
     },
 })
+
 //signup API
 export const SignupAPI = (signupdetail) => API.post("/auth/signup", signupdetail);
 //create post APIs --
