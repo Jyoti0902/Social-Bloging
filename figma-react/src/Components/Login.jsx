@@ -21,7 +21,7 @@ const Login = () => {
 			error.password = "Please enter password!";
 		}
 		else if (Object.keys(errors).length === 0) {
-			const res = await axios.post("http://localhost:5505/auth/login", logindetail);
+			const res = await axios.post("https://social-bloging-web-hkb1.onrender.com/auth/login", logindetail);
 			if (res.data.token) {
 				localStorage.setItem("token", res.data.token);
 				localStorage.setItem("userId", res.data.userId);

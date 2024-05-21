@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5505";
+const BASE_URL = "https://social-bloging-web-hkb1.onrender.com";
 const token = localStorage.getItem("token");
 const API = axios.create({
     baseURL: BASE_URL,

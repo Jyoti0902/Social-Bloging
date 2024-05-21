@@ -74,8 +74,8 @@ const Main = () => {
                   allPost?.task.slice(0, 6).map((post, id) => {
                     return (
                       <>
-                        <Link to={`http://localhost:5505/${post.image}`}>
-                          <img className="blog-pics" src={`http://localhost:5505/${post.image}`} alt="blogs" />
+                        <Link to={`https://social-bloging-web-hkb1.onrender.com/${post.image}`}>
+                          <img className="blog-pics" src={`https://social-bloging-web-hkb1.onrender.com/${post.image}`} alt="blogs" />
                         </Link>
                       </>
                     )

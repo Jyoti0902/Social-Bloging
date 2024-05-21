@@ -28,7 +28,7 @@ const Signup = () => {
             error.confirmPassword = "Please confirm your password!";
         }
         else if (Object.keys(errors).length === 0) {
-            await axios.post("http://localhost:5505/auth/signup", signupdetail);
+            await axios.post("https://social-bloging-web-hkb1.onrender.com/auth/signup", signupdetail);
             alert("Account created successfully!");
             navigate("/");
 

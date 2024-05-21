@@ -64,67 +64,10 @@ const Post = ({ post, render, setRender }) => {
 
   return (
     <>
-      {/* <div className="post-main">
-        <div className="post" key={post._id}>
-          <div className='edit-icon'><FaRegEdit className='editi' onClick={() => navigate(`/update/${post._id}`)} />
-            <MdDelete className='del' onClick={() => handleDelete(post._id)} />
-          </div>
-          <div className="upperpost" onClick={() => navigate(`/blogdetails/${post._id}`)}>
-            <Link to={`http://localhost:5505/${post.image}`}>
-              <img className="bg1" src={`http://localhost:5505/${post.image}`} alt="blogs" />
-            </Link>
-            <p className="font2"><span className='textcolor2'>Title: {post.title}</span><br />
-              <span className='textcolor1 des'>{post.description}</span></p>
-          </div>
-          <div className="post-details">
-            <img className="profile-img" src={`http://localhost:5505/${post.image}`} alt='profile' />
-            <div className="details">
-              <div className="profile-name">
-                <p>{post.title}</p>
-              </div>
-              <div className="other-details">
-                <p className="font1">{currentDate}&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                {post.liked ? <FaHeart
-                  className='like'
-                  style={{ color: "red" }}
-                  onClick={() => toggleLike(post._id)} />
-                  : <FaRegHeart
-                    className='like'
-                    style={{ color: "black" }}
-                    onClick={() => toggleLike(post._id)} />
-                }
-                <FaComment className='comment' onClick={() => toggleComment()} />
-              </div>
-            </div>
-          </div>
-        </div>
-        {commentShow &&
-          <div className='comments'>
-            <div className='show-comments'>
-              <h2>Comments:</h2>
-              {
-                post.postComments.length ? <span>{post.postComments.slice(0, 5).map((item, index) => {
-                  return <div className='map-comments'>
-                    <p>{item.comments}</p>
-                    <div className='del-icon'><TiDeleteOutline onClick={() => handleDeleteCommment(post._id, item._id)} /></div>
-                  </div>
-                })}</span>
-                  : <span>No comment</span>}
-            </div>
-            <div className='post-comment'>
-              <div className='send'>
-                <textarea value={comments.comments} onChange={(e) => setComment({ ...comments, comments: e.target.value })} rows={20} type='text' placeholder='Write a comment here!' />
-                <button onClick={() => handlePostComments(post._id)}>Send</button></div>
-            </div>
-          </div>}
-
-
-      </div> */}
-      {/* duplicate */}
       <div className="post-main">
         <div className="blog-img">
-          <Link to={`http://localhost:5505/${post.image}`}>
-            <img className="blog-photo" src={`http://localhost:5505/${post.image}`} alt="blogs" />
+          <Link to={`https://social-bloging-web-hkb1.onrender.com/${post.image}`}>
+            <img className="blog-photo" src={`https://social-bloging-web-hkb1.onrender.com/${post.image}`} alt="blogs" />
           </Link>
         </div>
         <div className="blog-detail">
