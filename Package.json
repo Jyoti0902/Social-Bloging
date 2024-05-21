@@ -1,14 +1,14 @@
 {
-  "name": "blognest",
+  "name": "mern-deploy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server": "cd Social-Bloging/backend && npm install",
-    "start-server": "cd Social-Bloging/backend && node index.js",
-    "install-client": "cd Social-Bloging/figma-react && npm install",
-    "build-client": "cd Social-Bloging/figma-react && npm run build",
-    "start-client": "cd Social-Bloging/figma-react && npm run start"
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node app.js",
+    "install-client": "cd figma-react && npm install",
+    "build-client": "cd figma-react && npm run build",
+    "start-client": "cd figma-react && npm run start"
   },
   "keywords": [],
   "author": "",
