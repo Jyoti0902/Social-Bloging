@@ -22,22 +22,6 @@ const Main = () => {
     <>
       <Uheader />
       <div className='main-container'>
-        <div className='main-imgs'>
-          {/* <div>
-            <img src={bg1} alt="bg1" className='main-img' />
-          </div>
-          <div id='main-img'>
-            <img src={bg2} alt="bg2" className='main-img' />
-            <h1 className='main-heading'>My Life. My Blogs.</h1>
-          </div>
-          <div>
-            <img src={bg3} alt="bg3" className='main-img' />
-          </div> */}
-          {/* <div className='main-h'>Write.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Share.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Connect.</div> */}
-          <div className='main-h' style={{margin:'auto'}}>BLog Posts</div>
-        </div>
         <div className="left-container">
           <div className="main">
             {
