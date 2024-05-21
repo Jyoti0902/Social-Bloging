@@ -8,7 +8,7 @@
     "start-server": "cd backend && node index.js",
     "install-client": "cd figma-react && npm install",
     "build-client": "cd figma-react && npm run build",
-    "start-client": "cd figma-react && npm run start"
+    "start-client": "cd figma-react && npm run start" 
   },
   "keywords": [],
   "author": "",
