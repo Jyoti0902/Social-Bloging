@@ -1,128 +1,12 @@
-.post:hover {
-  box-shadow: 0 1px 1px #94618e, 0 2px 2px #94618e, 0 4px 4px #94618e,
-    0 6px 8px #94618e, 0 8px 16px #94618e;
-  height: 444px;
-  width: 344px;
-}
-.bg1 {
-  height: 180px;
-  width: 280px;
-  margin: 30px;
-  border-radius: 30px;
-  transition-duration: 0.6s;
-}
-.font2 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  padding: 0px 28px;
-}
-.details {
-  padding: 0px 10px;
-}
-.post-details {
-  display: flex;
-  border-top: 2px solid grey;
-  padding: 10px 20px;
-  margin: 4px;
-}
-.other-details {
-  display: flex;
-}
-
-.like,
-.comment {
-  padding: 4px;
-  color: #49274a;
-  transition-duration: 0.5s;
-}
-.edit-icon {
-  text-align: end;
-  margin-top: 10px;
-  margin-right: 20px;
-  color: #49274a;
-}
-.del {
-  margin-left: 10px;
-  transition-duration: 0.5s;
-}
-.editi {
-  transition-duration: 0.5s;
-}
-.des {
-  font-size: 18px;
-}
-.profile-name {
-  padding: 4px 0px;
-  transition-duration: 0.4s;
-}
-.font1 {
-  transition-duration: 0.4s;
-  padding: 4px 0px;
-}
-
-/* comments */
-.comment {
-  display: flex;
-  flex-direction: column;
-}
-.post-comment {
-  position: relative;
-  right: 12px;
-  bottom: 8px;
-}
-.post-comment textarea {
-  height: 20px;
-  width: 220px;
-  padding: 10px;
-  border-radius: 10px;
-}
-.send {
-  display: flex;
-}
-
-.post-main {
-  display: flex;
-}
-
-/* hover effects */
-.like:hover {
-  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
-  font-size: 18px;
-}
-.comment:hover {
-  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
-  font-size: 18px;
-}
-.del:hover {
-  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
-  font-size: 19px;
-}
-.editi:hover {
-  text-shadow: 1px 1px 2px #49274a, 0 0 1em #49274a, 0 0 0.2em #49274a;
-  font-size: 19px;
-}
-.bg1:hover {
-  box-shadow: 0 1px 3px #49274a, 0 1px 2px #49274a;
-  height: 190px;
-  width: 290px;
-  margin: 25px;
-}
-.profile-name:hover {
-  text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e;
-  font-size: 17px;
-}
-.font1:hover {
-  text-shadow: 1px 1px 2px #94618e, 0 0 1em #94618e, 0 0 0.2em #94618e;
-  font-size: 17px;
-}
 
 .post-main {
   margin: 20px;
+  display: flex;
 }
 .blog-photo {
   width: 268px;
   height: 360px;
+  border-radius: 30px 0px 0px 30px;
 }
 .blog-detail {
   width: 268px;
@@ -133,6 +17,7 @@
   flex-direction: column;
   text-align: left;
   justify-content: space-between;
+  border-radius: 0px 30px 30px 0px;
 }
 .blog-date {
   margin: 15px;
@@ -196,4 +81,23 @@
   color: white;
   border: none;
   border-radius: 8px;
+}
+/* comments */
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+.post-comment {
+  position: relative;
+  right: 12px;
+  bottom: 8px;
+}
+.post-comment textarea {
+  height: 20px;
+  width: 220px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.send {
+  display: flex;
 }

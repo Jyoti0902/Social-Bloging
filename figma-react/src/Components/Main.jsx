@@ -41,7 +41,7 @@ const Main = () => {
         <div className="left-container">
           <div className="main">
             {
-              allPost?.allpost.length ? allPost.allpost.slice(0, 3).map((post, id) => {
+              allPost?.task.length ? allPost.task.slice(0, 3).map((post, id) => {
                 return (
                   <>
                     <Post
@@ -71,7 +71,7 @@ const Main = () => {
               <h2>Share Your Experience</h2>
               <div className="blog-photos">
                 {
-                  allPost?.task.slice(0, 6).map((post, id) => {
+                  allPost?.allpost.slice(0, 6).map((post, id) => {
                     return (
                       <>
                         <Link to={`https://social-bloging-b.onrender.com/${post.image}`}>
