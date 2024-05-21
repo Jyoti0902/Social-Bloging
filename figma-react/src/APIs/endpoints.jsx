@@ -9,6 +9,8 @@ const API = axios.create({
         // "Content-Type": "application/json",
     },
 })
+//signup API
+export const SignupAPI = (signupdetail) => API.post("/auth/signup", signupdetail);
 //create post APIs --
 export const Create = (blogDetails) => API.post("/post/create", blogDetails);
 export const GetBlogs = () => API.get("/post");

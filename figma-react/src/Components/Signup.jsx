@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import '../ComponentCSS/Signup.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { SignupAPI } from '../APIs/endpoints';
+
 
 const Signup = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [signupdetail, setSignupDetail] = useState({
         userName: "",
         email: "",
@@ -28,21 +32,19 @@ const Signup = () => {
             error.confirmPassword = "Please confirm your password!";
         }
         else if (Object.keys(errors).length === 0) {
-            await axios.post("https://social-bloging-web-hkb1.onrender.com/auth/signup", signupdetail);
+            dispatch(SignupAPI(signupdetail));
             alert("Account created successfully!");
             navigate("/");
-
         }
         setErrors(error);
     }
-    console.log(signupdetail);
     return (
         <><div className='main-signup'>
             <div className="signup-container">
                 <div className="signup-content">
                     <h1>SIGNUP</h1>
                     <p className='signup-para'>If you already have an account
-                        <a href='/'> login.</a>
+                        <Link to='/'> login.</Link>
                     </p>
                 </div>
                 <div className="signup-inputs">
