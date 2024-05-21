@@ -1,0 +1,17 @@
+{
+    "name": "blognest",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "install-server": "cd backend && npm install",
+      "start-server": "cd backend && node app.js",
+      "install-client": "cd figma-react && npm install",
+      "build-client": "cd figma-react && npm run build",
+      "start-client": "cd figma-react && npm run start"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+  
