@@ -61,7 +61,7 @@ const Profile = () => {
 
     useEffect(() => {
         getUser();
-    }, [editForm, editCover]);
+    }, [editForm, coverPic]);
 
     return (
         <>
@@ -79,7 +79,7 @@ const Profile = () => {
                                                     const selectedFile = e.target.files[0];
                                                     setCoverPic(selectedFile);
                                                 } else {
-                                                    setCoverPic({});
+                                                    setCoverPic({ ...user, coverPhoto: {} });
                                                 }
                                             }} />
                                             <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -89,7 +89,7 @@ const Profile = () => {
 
                                         </div>
                                         :
-                                        <FaCameraRetro onClick={() => setEditCover(true)} style={{ color: '#fceae8',fontSize:'20px' }} />
+                                        <FaCameraRetro onClick={() => setEditCover(true)} style={{ color: '#fceae8', fontSize: '20px' }} />
                                 }
                             </div>
                         </div>

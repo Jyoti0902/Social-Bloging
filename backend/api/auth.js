@@ -25,7 +25,7 @@ authRouter.post("/send-mail", async (req, res) => {
       from: "jyotibrar0902@gmail.com",
       to: email,
       subject: "Forgot password!",
-      text: `Click on this link to reset password! : http://localhost:3000/resetpassword/${email}`,
+      text: `Click on this link to reset password! : https://blog-nest-jvu0.onrender.com/${email}`,
     };
     await transporter.sendMail(mailOption);
     res
