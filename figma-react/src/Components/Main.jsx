@@ -6,6 +6,7 @@ import Post from './Post';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBlogs } from '../Redux/actions/post';
 import Uheader from './Uheader';
+import { FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -66,6 +67,11 @@ const Main = () => {
 
                   })
                 }
+              </div>
+              <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                <FaTwitter className='social-icon' />
+                <FaInstagram className='social-icon' />
+                <FaLinkedin className='social-icon' />
               </div>
             </div>
           </div>

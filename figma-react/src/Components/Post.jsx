@@ -74,7 +74,7 @@ const Post = ({ post, render, setRender }) => {
           <div onClick={() => navigate(`/blogdetails/${post._id}`)}>
             <p className="blog-date">{currentDate}</p>
             <p className="blog-title">{post.title}</p>
-            <p className='blog-des'>{post.description}Create a blog post subtitle that summarizes your post in a few short, punchy sentences and</p>
+            <p className='blog-des'>{post.description}</p>
           </div>
           <div style={{display:'flex',justifyContent:'space-between'}}><span onClick={() => navigate(`/blogdetails/${post._id}`)} style={{color:'black'}}>See More...</span>
           <div className='like-comment'>
