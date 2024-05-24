@@ -16,40 +16,34 @@ const UpdateBlog = () => {
 
   const { id } = useParams();
 
-  const getData = async () => {
-    try {
-      await dispatch(getByIdBlog(id));
-      setUpdateDetails({
-        title: getOne.title,
-        description: getOne.description,
-        image: getOne.image
-      });
-    } catch (err) {
-      console.log(err);
-    }
+  const getData = () => {
+    dispatch(getByIdBlog(id));
   };
 
   useEffect(() => {
     getData();
   }, [id]);
 
+  useEffect(()=>{
+    setUpdateDetails({
+      title: getOne.title,
+      description: getOne.description,
+      image: getOne.image
+    });
+  },[getOne])
   const handleFile = (e) => {
     const file = e.target.files[0];
     setUpdateDetails({ ...updateDetails, image: file });
   };
 
-  const handleUpdate = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("title", updateDetails.title);
-      formData.append("description", updateDetails.description);
-      formData.append("image", updateDetails.image);
-      await dispatch(updateBlog({ formData, id }));
-      alert("Updated successfully!");
-      navigate("/blog");
-    } catch (err) {
-      console.log(err);
-    }
+  const handleUpdate = () => {
+    const formData = new FormData();
+    formData.append("title", updateDetails.title);
+    formData.append("description", updateDetails.description);
+    formData.append("image", updateDetails.image);
+    dispatch(updateBlog({ formData, id }));
+    alert("Updated successfully!");
+    navigate("/blog");
   };
 
   return (

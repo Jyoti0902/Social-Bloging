@@ -44,7 +44,7 @@ const BlogDetails = () => {
             <div className='blog-details'>
                 <div className='blogdetail-main-container'>
                     <div className='blog-div-main-image'>
-                        <img className='blog-main-image' src={`https://blog-nest-jvu0.onrender.com/${getOne.image}`} alt="blog" />
+                        <img className='blog-main-image' src={`${process.env.REACT_APP_API}/${getOne.image}`} alt="blog" />
                     </div>
                     <div className='blogdetail-page-main-div'>
                         <div style={{display:'flex'}}>Title:

@@ -19,6 +19,7 @@ const Post = ({ post, render, setRender }) => {
     dispatch(getAllBlogs());
     alert("Post deleted successfully!")
   }
+  console.log(post.image)
   //....................comments input show with API................
   const [commentShow, setCommentShow] = useState(false);
   const toggleComment = () => {
@@ -61,13 +62,12 @@ const Post = ({ post, render, setRender }) => {
     setRender(!render);
     alert("Comment deleted successfully!")
   }
-
   return (
     <>
       <div className="post-main">
         <div className="blog-img">
-          <Link to={`https://social-bloging-b.onrender.com/${post.image}`}>
-            <img className="blog-photo" src={`https://social-bloging-b.onrender.com/${post.image}`} alt="blogs" />
+          <Link to={`${process.env.REACT_APP_API}/${post.image}`}>
+            <img className="blog-photo" src={`${process.env.REACT_APP_API}/${post.image}`} alt="blogs" />
           </Link>
         </div>
         <div className="blog-detail">

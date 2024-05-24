@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
-// import '../ComponentCSS/HeaderLower.css';
-import { FaSearch } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterPosts, getAllBlogs, searchByTitle, searchByTitleOnInput } from '../Redux/actions/post';
+import { filterPosts, getAllBlogs, searchByTitle } from '../Redux/actions/post';
 
 const HeaderLower = () => {
-  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [created_Date, setCreated_Date] = useState("");
   const [searchBy, setSearchBy] = useState("");

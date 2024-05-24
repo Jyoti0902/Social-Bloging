@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../ComponentCSS/Signup.css';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { SignupAPI } from '../APIs/endpoints';
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://social-bloging-b.onrender.com";
+const BASE_URL = process.env.REACT_APP_API;
 const token = localStorage.getItem("token");
 const API = axios.create({
     baseURL: BASE_URL,

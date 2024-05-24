@@ -69,7 +69,7 @@ const Profile = () => {
                 editForm ?
                     <div className='profile-container'>
                         <div className="profile-bg">
-                            <img src={`https://social-bloging-b.onrender.com/${user.coverPhoto}`} alt="profile-bg" />
+                            <img src={`${process.env.REACT_APP_API}/${user.coverPhoto}`} alt="profile-bg" />
                             <div className='cover-photo-icon'>
                                 {
                                     editCover ?
@@ -95,7 +95,7 @@ const Profile = () => {
                         </div>
                         <div className='details-profile'>
                             <div className="profile-photo">
-                                <img src={`https://social-bloging-b.onrender.com/${user.profilePhoto}`} alt="profile" />
+                                <img src={`${process.env.REACT_APP_API}/${user.profilePhoto}`} alt="profile" />
                                 <button className='profile-btn' onClick={() => setEditForm(false)}>Edit Profile</button>
                                 <button className='profile-btn' onClick={() => navigate("/change-password")}>Change Password</button>
                                 <button className='profile-btn' onClick={() => navigate("/blog")}>Back</button>
@@ -133,9 +133,9 @@ const Profile = () => {
                                 >
                                     {task.map((item, index) => (
                                         <div className='display-post-photos' key={index}>
-                                            <Link to={`https://social-bloging-b.onrender.com/${item.image}`}>
+                                            <Link to={`${process.env.REACT_APP_API}/${item.image}`}>
                                                 <SwiperSlide>
-                                                    <img className='blog-images' src={`https://social-bloging-b.onrender.com/${item.image}`} alt="blogs" />
+                                                    <img className='blog-images' src={`${process.env.REACT_APP_API}/${item.image}`} alt="blogs" />
                                                 </SwiperSlide>
                                             </Link>
                                         </div>

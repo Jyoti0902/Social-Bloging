@@ -29,8 +29,8 @@ function App1() {
     location.pathname === "/signup" ||
     location.pathname === "/profile" ||
     location.pathname === "/forgotpassword" ||
-    location.pathname === "/resetpassword/:email" ||
-    location.pathname === "/blogdetails/:id";
+    location.pathname.startsWith("/resetpassword" )||
+    location.pathname.startsWith("/blogdetails");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   useEffect(() => {

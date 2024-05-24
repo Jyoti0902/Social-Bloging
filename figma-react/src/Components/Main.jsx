@@ -59,8 +59,8 @@ const Main = () => {
                   allPost?.allpost.slice(0, 6).map((post, id) => {
                     return (
                       <>
-                        <Link to={`https://social-bloging-b.onrender.com/${post.image}`}>
-                          <img className="blog-pics" src={`https://social-bloging-b.onrender.com/${post.image}`} alt="blogs" />
+                        <Link to={`${process.env.REACT_APP_API}/${post.image}`}>
+                          <img className="blog-pics" src={`${process.env.REACT_APP_API}/${post.image}`} alt="blogs" />
                         </Link>
                       </>
                     )
