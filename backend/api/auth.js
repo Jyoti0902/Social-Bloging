@@ -9,7 +9,7 @@ const authRouter = express.Router();
 const transporter = nodemailer.createTransport({
   service: "gmail", // Use `true` for port 465, `false` for all other ports
   auth: {
-    user: "jyotibrar0902@gmail.com",
+    user: `${process.env.EMAIL}`,
     pass: "dusn qbkh xpuw ooob",
   },
 });
@@ -22,10 +22,10 @@ authRouter.post("/send-mail", async (req, res) => {
       return res.status(404).json({ message: "Receivers email not found!" });
     }
     const mailOption = {
-      from: "jyotibrar0902@gmail.com",
+      from: `${process.env.EMAIL}`,
       to: email,
       subject: "Forgot password!",
-      text: `Click on this link to reset password! : https://blog-nest-jvu0.onrender.com/resetpassword/${email}`,
+      text: `Click on this link to reset password! : ${process.env.FRONTEND_LINK}/resetpassword/${email}`,
     };
     await transporter.sendMail(mailOption);
     res
