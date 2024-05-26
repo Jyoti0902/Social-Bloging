@@ -31,7 +31,7 @@ export const postSlice = createSlice({
       state.allpost = action.payload;
     });
     builder.addCase(getAllBlogs.rejected, (state, action) => {
-      state.loading = true;
+      state.loading = false;
       state.error = action.payload;
     });
     //getById reducer
@@ -43,7 +43,7 @@ export const postSlice = createSlice({
       state.getOne = action.payload;
     });
     builder.addCase(getByIdBlog.rejected, (state, action) => {
-      state.loading = true;
+      state.loading = false;
       state.error = action.payload;
     });
     //filter post reducer
@@ -55,7 +55,7 @@ export const postSlice = createSlice({
       state.task = action.payload;
     });
     builder.addCase(filterPosts.rejected, (state, action) => {
-      state.loading = true;
+      state.loading = false;
       state.error = action.payload;
     });
     //searchbytitle reducer
@@ -68,9 +68,9 @@ export const postSlice = createSlice({
       // state.task = action.payload;
     });
     builder.addCase(searchByTitle.rejected, (state, action) => {
-      state.loading = true;
+      state.loading = false;
       state.error = action.payload;
-    });///////
+    });
     builder.addCase(searchByTitleOnInput.pending, (state) => {
       state.loading = false;
     });
@@ -79,7 +79,7 @@ export const postSlice = createSlice({
       state.task = action.payload;
     });
     builder.addCase(searchByTitleOnInput.rejected, (state, action) => {
-      state.loading = true;
+      state.loading = false;
       state.error = action.payload;
     });
   },

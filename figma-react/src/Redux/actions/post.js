@@ -79,7 +79,6 @@ export const deleteBlogById = createAsyncThunk(
     }
   }
 );
-
 //filter posts
 export const filterPosts = createAsyncThunk(
   "post/filterPosts",
@@ -93,7 +92,6 @@ export const filterPosts = createAsyncThunk(
   }
 );
 //search by title
-
 export const searchByTitle = createAsyncThunk(
   "post/searchByTitle",
   async (title) => {
@@ -116,7 +114,6 @@ export const searchByTitleOnInput = createAsyncThunk(
     }
   }
 );
-
 //comments actions
 export const doComments = createAsyncThunk(
   "post/doComments1",
