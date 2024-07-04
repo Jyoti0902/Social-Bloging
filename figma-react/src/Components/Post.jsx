@@ -19,7 +19,7 @@ const Post = ({ post, render, setRender }) => {
     dispatch(getAllBlogs());
     alert("Post deleted successfully!")
   }
-  console.log(post.image)
+  // console.log(post.image)
   //....................comments input show with API................
   const [commentShow, setCommentShow] = useState(false);
   const toggleComment = () => {

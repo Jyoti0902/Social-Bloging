@@ -10,7 +10,7 @@ const AllPosts = () => {
       <div className='all-blogs'>
         <div className="allblogs">
           {
-            allPost?.task.length ? allPost.task.map((post, id) => {
+            allPost?.task?.length ? allPost?.task?.map((post, id) => {
               return (
                 <>
                   <Post

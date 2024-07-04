@@ -131,7 +131,7 @@ const Profile = () => {
                                     modules={[Autoplay, Pagination, Navigation]}
                                     className="mySwiper"
                                 >
-                                    {task.map((item, index) => (
+                                    {task?.map((item, index) => (
                                         <div className='display-post-photos' key={index}>
                                             <Link to={`${process.env.REACT_APP_API}/${item.image}`}>
                                                 <SwiperSlide>

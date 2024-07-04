@@ -39,7 +39,7 @@ const Uheader = () => {
                                 handleSearchInput(searchBy);
                             }
                         }} />
-                        {searchBy.length ?
+                        {searchBy?.length ?
                             <div className='suggestion'>
                                 {
                                     allBlogs?.search?.map((item, index) =>

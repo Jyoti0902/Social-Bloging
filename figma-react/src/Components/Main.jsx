@@ -26,7 +26,7 @@ const Main = () => {
         <div className="left-container">
           <div className="main">
             {
-              allPost?.task.length ? allPost?.task.slice(0, 3).map((post, id) => {
+              allPost?.task?.length ? allPost?.task?.slice(0, 3).map((post, id) => {
                 return (
                   <>
                     <Post
